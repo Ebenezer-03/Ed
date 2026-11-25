@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { BookOpenCheck, Sparkles } from 'lucide-react';
 import { LandingHero } from './components/LandingHero';
 import { SourcesPanel } from './components/SourcesPanel';
+import { StudioDrawer } from './components/StudioDrawer';
 import { TutorPanel } from './components/TutorPanel';
 import { loadSources, saveSources } from './data/initialSources';
 import { evaluateQuestion } from './engine/evidenceGate';
@@ -169,6 +170,20 @@ export function App() {
     );
   };
 
+  const handleApproveSource = (id: string) => {
+    setSources((prev) =>
+      prev.map((src) =>
+        src.id === id
+          ? {
+              ...src,
+              status: 'APPROVED',
+              updatedAt: new Date().toISOString().slice(0, 10),
+            }
+          : src
+      )
+    );
+  };
+
   const handleDeleteSource = (id: string) => {
     setSources((prev) => {
       const next = prev.filter((s) => s.id !== id);
@@ -269,33 +284,15 @@ export function App() {
           isHiddenOnMobile={mobilePane !== 'tutor'}
         />
 
-        <aside
-          className={`pane ${mobilePane !== 'studio' ? 'is-mobile-hidden' : ''}`}
-          aria-label="Source proof and evaluation"
-        >
-          <div className="pane__head">
-            <h2 className="pane__title">Source Proof ({teacherGaps.length} gaps)</h2>
-          </div>
-          <div className="pane__body">
-            {selectedSource ? (
-              <div>
-                <p className="mono" style={{ fontSize: 12, color: 'var(--accent)', margin: '0 0 6px' }}>
-                  {selectedSource.unit} · {selectedSource.pageLabel}
-                </p>
-                <h3 style={{ margin: '0 0 10px', fontSize: 15 }}>{selectedSource.title}</h3>
-                <p style={{ fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink-2)' }}>
-                  {activeExcerpt ? (
-                    <mark className="proof-mark">{activeExcerpt}</mark>
-                  ) : (
-                    selectedSource.content
-                  )}
-                </p>
-              </div>
-            ) : (
-              <p style={{ color: 'var(--muted)', fontSize: 13.5 }}>Select a source to inspect.</p>
-            )}
-          </div>
-        </aside>
+        <StudioDrawer
+          sources={sources}
+          selectedSource={selectedSource}
+          activeExcerpt={activeExcerpt}
+          teacherGaps={teacherGaps}
+          onApproveSource={handleApproveSource}
+          onClearGaps={() => setTeacherGaps([])}
+          isHiddenOnMobile={mobilePane !== 'studio'}
+        />
       </main>
     </div>
   );
