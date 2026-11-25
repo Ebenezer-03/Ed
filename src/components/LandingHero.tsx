@@ -52,7 +52,7 @@ export function LandingHero({ onOpenWorkspace }: LandingHeroProps) {
           onClick={() => onOpenWorkspace(true)}
         >
           <span className="hero-pill__tag">New</span>
-          <span>Evidence-Gated Study Tutor · 30Q Eval Ready</span>
+          <span>3-Mode Evidence Gate · 30Q Eval</span>
           <ChevronRight size={14} />
         </button>
 
@@ -127,22 +127,22 @@ export function LandingHero({ onOpenWorkspace }: LandingHeroProps) {
         </p>
         <div className="landing__specs">
           <span className="landing__spec-item">
-            <FileCheck2 size={16} /> Teacher Approval Gate
+            <FileCheck2 size={15} /> Teacher Approval
           </span>
           <span className="landing__spec-item">
-            <BookOpenCheck size={16} /> Exact Page Citations
+            <BookOpenCheck size={15} /> Page Citations
           </span>
           <span className="landing__spec-item">
-            <Table2 size={16} /> Table-Aware Ingestion
+            <Table2 size={15} /> Table Parsing
           </span>
           <span className="landing__spec-item">
-            <Calculator size={16} /> Deterministic Math Steps
+            <Calculator size={15} /> Python Math Steps
           </span>
           <span className="landing__spec-item">
-            <ShieldAlert size={16} /> Unsupported Query Refusal
+            <ShieldAlert size={15} /> Refusal Gate
           </span>
           <span className="landing__spec-item">
-            <FlaskConical size={16} /> 30-Question Eval Harness
+            <FlaskConical size={15} /> 30Q Eval Suite
           </span>
         </div>
       </section>

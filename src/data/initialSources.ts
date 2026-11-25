@@ -37,7 +37,7 @@ export const INITIAL_SOURCES: CourseSource[] = [
     format: 'PDF',
     updatedAt: '2026-11-25',
     content:
-      'A deadlock situation can arise if and only if four necessary conditions hold simultaneously in a system: (1) Mutual exclusion — at least one resource must be held in a non-sharable mode; (2) Hold and wait — a process holding at least one resource waits to acquire additional resources held by others; (3) No preemption — resources cannot be forcibly taken away until voluntarily released; (4) Circular wait — a closed chain of waiting processes exists where each holds a resource needed by the next.',
+      'A deadlock situation can arise if and only if four necessary conditions hold simultaneously in a system. First, Mutual exclusion requires that at least one resource be held in a non-sharable mode. Second, Hold and wait means a process holding one resource waits for additional resources held by others. Third, No preemption prevents resources from being forcibly taken until voluntarily released. Fourth, Circular wait forms a closed chain of waiting processes.',
   },
   {
     id: 'src-os-4',

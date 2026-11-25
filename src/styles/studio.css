@@ -76,12 +76,13 @@
 
 .pane__head {
   flex: none;
-  padding: 14px 16px;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .pane__title {
@@ -89,6 +90,7 @@
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -300,7 +302,8 @@
   .pane.is-mobile-hidden {
     display: none;
   }
-  .course-pill {
+  .course-pill,
+  .studio-topbar__right .badge {
     display: none;
   }
 }
@@ -585,10 +588,16 @@
   gap: 12px;
 }
 
-.gaps-head,
-.eval-header {
+.gaps-head {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.eval-header {
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
